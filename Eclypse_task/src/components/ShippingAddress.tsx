@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdArrowBackIos } from "react-icons/md";
 import { FaRegDotCircle } from "react-icons/fa";
 
@@ -13,6 +13,24 @@ interface AddressFormData {
 }
 
 const ShippingAddress: React.FC = () => {
+  const [formData, setFormData] = useState<AddressFormData>({
+    firstName: "",
+    lastName: "",
+    address: "",
+    aptNumber: "",
+    state: "",
+    zip: "",
+  });
+
+  // Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
   return (
     <div className="w-full min-h-fit flex justify-center items-start bg-gray-50 py-8 px-2">
       <div className="w-full p-4 sm:p-8">
@@ -33,18 +51,22 @@ const ShippingAddress: React.FC = () => {
 
             <div className="flex gap-2">
               <div className="flex flex-col flex-1">
-                <label htmlFor="firstname">First Name</label>
+                <label htmlFor="firstName">First Name</label>
                 <input
                   type="text"
-                  id="firstname"
+                  id="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
                   className="w-full py-2 px-2 border border-gray-500 rounded-md"
                 />
               </div>
               <div className="flex flex-col flex-1">
-                <label htmlFor="lastname">Last Name</label>
+                <label htmlFor="lastName">Last Name</label>
                 <input
                   type="text"
-                  id="lastname"
+                  id="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
                   className="w-full py-2 px-2 border border-gray-500 rounded-md"
                 />
               </div>
@@ -55,16 +77,20 @@ const ShippingAddress: React.FC = () => {
               <input
                 type="text"
                 id="address"
+                value={formData.address}
+                onChange={handleChange}
                 className="w-full py-2 px-2 border border-gray-500 rounded-md"
               />
             </div>
 
             <div className="flex gap-2 mt-2">
               <div className="flex flex-col flex-1">
-                <label htmlFor="number">Apt Number</label>
+                <label htmlFor="aptNumber">Apt Number</label>
                 <input
-                  type="number"
-                  id="number"
+                  type="text"
+                  id="aptNumber"
+                  value={formData.aptNumber}
+                  onChange={handleChange}
                   className="w-full py-2 px-2 border border-gray-500 rounded-md"
                 />
               </div>
@@ -73,6 +99,8 @@ const ShippingAddress: React.FC = () => {
                 <input
                   type="text"
                   id="state"
+                  value={formData.state}
+                  onChange={handleChange}
                   className="w-full py-2 px-2 border border-gray-500 rounded-md"
                 />
               </div>
@@ -81,6 +109,8 @@ const ShippingAddress: React.FC = () => {
                 <input
                   type="text"
                   id="zip"
+                  value={formData.zip}
+                  onChange={handleChange}
                   className="w-full py-2 px-2 border border-gray-500 rounded-md"
                 />
               </div>
