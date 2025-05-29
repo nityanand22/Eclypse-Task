@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Dummy endpoint example
 app.get("/api/products", (req, res) => {
-  res.json([{ id: 1, price: 7999 }]);
+  res.json([{ id: 1, price: 8999 }]);
 });
 
 app.listen(PORT, () => {
