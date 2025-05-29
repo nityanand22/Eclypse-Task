@@ -9,6 +9,8 @@ This project is a fullstack web application built with:
 
 The goal is to accurately recreate a product page design with functional components, basic state management, and a responsive layout. The backend provides a simple API endpoint to serve product data.
 
+### I am just fetching the price of the product
+
 ---
 
 ## Folder Structure
